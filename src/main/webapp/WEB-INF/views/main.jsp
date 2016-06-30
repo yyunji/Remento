@@ -230,7 +230,12 @@
 					</div>
 				</div>
 				<div class="pull-right model-preview">
-					<div class="model-3d background-section" data-original="${ctx }/images/3d_model.gif""></div>
+					<div class="model-preview-line"></div>
+					<div class="controller"></div>
+					<div class="model-image-wrap">
+						<div class="model-3d background-section model" data-original="${ctx }/images/3d_model.gif"></div>
+						<div class="model-figure background-section model" data-original="${ctx }/images/figure_model.gif"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -303,6 +308,36 @@ $(function(){
 			marginTop : - $($textBox[i]).outerHeight() / 2
 		});
 	}
+	
+	//3D Model Move Event
+	var previewSpace = 0,
+		moveState = false,
+		$controller = $(".controller"),
+		$wrap = $(".model-image-wrap");
+	
+	$controller.mousedown( function ( event ) {
+		moveState = true;
+	}).mouseup( function ( event ) {
+		moveState = false;
+	})
+	$(".model-preview").on("mousemove", function ( event ) {
+		$(this).on("mouseup", function ( event ) {
+			moveState = false;
+		});
+		if ( moveState ) {
+			console.log( ( event.pageX - $(".model-image-wrap").offset().left ) / $(".model-image-wrap").width() * 100 );
+			$controller.css({
+				left : ( event.pageX - 20 - $(".model-image-wrap").offset().left ) / $(".model-image-wrap").width() * 100 + "%"
+			});
+			$(".model-3d").css({
+				width : ( event.pageX - $(".model-image-wrap").offset().left ) / $(".model-image-wrap").width() * 100 + "%"
+			});
+		}
+	});
+	
+	$(".model-preview").on("mouseleave", function ( event ) {
+		moveState = false;
+	});
 	
 </script>
 <!-- script (e) -->
