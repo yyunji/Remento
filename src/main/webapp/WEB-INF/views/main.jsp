@@ -315,29 +315,39 @@ $(function(){
 		$controller = $(".controller"),
 		$wrap = $(".model-image-wrap");
 	
-	$controller.mousedown( function ( event ) {
-		moveState = true;
-	}).mouseup( function ( event ) {
-		moveState = false;
-	})
-	$(".model-preview").on("mousemove", function ( event ) {
-		$(this).on("mouseup", function ( event ) {
-			moveState = false;
-		});
-		if ( moveState ) {
-			console.log( ( event.pageX - $(".model-image-wrap").offset().left ) / $(".model-image-wrap").width() * 100 );
-			$controller.css({
-				left : ( event.pageX - 20 - $(".model-image-wrap").offset().left ) / $(".model-image-wrap").width() * 100 + "%"
-			});
-			$(".model-3d").css({
-				width : ( event.pageX - $(".model-image-wrap").offset().left ) / $(".model-image-wrap").width() * 100 + "%"
-			});
-		}
-	});
+// 	$controller.mousedown( function ( event ) {
+// 		moveState = true;
+// 	}).mouseup( function ( event ) {
+// 		moveState = false;
+// 	})
+// 	$(".model-preview").on("mousemove", function ( event ) {
+// 		$(this).on("mouseup", function ( event ) {
+// 			moveState = false;
+// 		});
+// 		if ( moveState ) {
+// 			var $target = $(".model-image-wrap");
+			
+// 			$controller.css({
+// 				left : ( ( $wrap.width() / 2 ) / $wrap.width() * 100 ) + ( ( event.pageX - $target.offset().left - $wrap.width() / 2 ) / $wrap.width() * 100 ) + "%"
+// 			});
+// 			$(".model-preview-line").css({
+// 				left : ( ( $wrap.width() / 2 ) / $wrap.width() * 100 ) + ( ( event.pageX - $target.offset().left - $wrap.width() / 2 ) / $wrap.width() * 100 ) + "%"
+// 			});
+// 			$(".model-3d").css({
+// 				width : ( ( $wrap.width() / 2 ) / $wrap.width() * 100 ) + ( ( event.pageX - $target.offset().left - $wrap.width() / 2 ) / $wrap.width() * 100 ) + "%"
+// 			});
+// // 			$(".model-figure").css({
+// // 				width : ( ( $wrap.width() / 2 ) / $wrap.width() * 100 ) - ( ( event.pageX - $target.offset().left - $wrap.width() / 2 ) / $wrap.width() * 100 ) + "%"
+// // 			});
+
+// 			console.log( ( ( $wrap.width() / 2 ) / $wrap.width() * 100 ) + ( ( event.pageX - $target.offset().left - $wrap.width() / 2 ) / $wrap.width() * 100 ) )
+// 			console.log( ( event.pageX - $target.offset().left - $wrap.width() / 2 ) / $wrap.width() * 100 )
+// 		}
+// 	});
 	
-	$(".model-preview").on("mouseleave", function ( event ) {
-		moveState = false;
-	});
+// 	$(".model-preview").on("mouseleave", function ( event ) {
+// 		moveState = false;
+// 	});
 	
 </script>
 <!-- script (e) -->
