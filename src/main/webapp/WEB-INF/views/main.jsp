@@ -226,7 +226,8 @@
 				<div class="pull-left">
 					<div class="title-box">
 						<h4>정교한 <b>스캔기술</b></h4>
-						<p>정교하지만 빠른 스캔기술로 빠르고 퀄리티있게 나만의 3D피규어를 만들 수 있습니다.</p>
+						<p>정교하지만 빠른 스캔기술로 빠르고 퀄리티있게<br> 나만의 3D피규어를 만들 수 있습니다.</p>
+						<button class="btn btn-lg main-color-btn">스튜디오 정보보기</button>
 					</div>
 				</div>
 				<div class="pull-right model-preview">
