@@ -23,59 +23,67 @@
 		<div class="join-container">
 			<h2>회원가입</h2>
 				<div class="join-wrap">
-					<div class="essential-wrap join-section">
-					<h3 class="essential-title">필수항목</h3>
-						<div class="join-row btn-input">
-							<label>
-								<input type="text" class="" id="userId" name="userId" placeholder="아이디">
-							</label>
-							<button type="submit" class="btn btn-default right-btn">중복확인</button>
+					<form action="${ctx }/joinProc">
+						<div class="essential-wrap join-section">
+						<h3 class="essential-title">필수항목</h3>
+							<div class="join-row btn-input">
+								<label>
+									<input type="text" class="" id="userId" name="userId" placeholder="아이디">
+								</label>
+								<button type="submit" class="btn btn-default right-btn">중복확인</button>
+							</div>
+							
+							<div class="join-row stack-wrap">
+								<label>
+									<input type="password" class="" id="userPw" name="userPw" placeholder="비밀번호">
+								</label>
+								<label>
+									<input type="password" class="" id="pwCheck" name="pwCheck" placeholder="비밀번호 확인">
+								</label>
+							</div>
+							
+							<div class="join-row">
+								<label>
+									<input type="text" class="" id="userName" name="userName" placeholder="이름">
+								</label>
+							</div>
+							
+							<div class="join-row btn-input">
+								<label>
+									<input type="text" class="" id="userEmail" name="userEmail" placeholder="이메일">
+								</label>
+								<button type="submit" class="btn btn-default right-btn">인증코드받기</button>
+							</div>
+							
+							<div class="join-row btn-input">
+								<label>
+									<input type="text" class="" id="zipCode" name="zipCode" placeholder="우편번호">
+								</label>
+								<button type="submit" class="btn btn-default right-btn">우편번호검색</button>
+							</div>
+							
+							<div class="join-row adress-info stack-wrap">
+								<label>
+									<input type="text" class="" id="adress" name="adress" placeholder="우편번호를 먼저 검색해주세요.">
+								</label>
+								<label>
+									<input type="text" class="" id="etcAdress" name="etcAdress" placeholder="나머지 주소를 입력해주세요.">
+								</label>
+							</div>
 						</div>
 						
-						<div class="join-row stack-wrap">
-							<label>
-								<input type="password" class="" id="userPw" name="userPw" placeholder="비밀번호">
-							</label>
-							<label>
-								<input type="password" class="" id="pwCheck" name="pwCheck" placeholder="비밀번호 확인">
-							</label>
+						<div class="optional-wrap join-section">
+							<h3 class="optional-title">선택항목</h3>
+							<div class="join-row">
+							</div>
 						</div>
 						
-						<div class="join-row">
-							<label>
-								<input type="text" class="" id="userName" name="userName" placeholder="이름">
-							</label>
+						<div class="btn-wrap">
+							<button type="submit" class="">
+								회원가입
+							</button>
 						</div>
-						
-						<div class="join-row btn-input">
-							<label>
-								<input type="text" class="" id="userEmail" name="userEmail" placeholder="이메일">
-							</label>
-							<button type="submit" class="btn btn-default right-btn">인증코드받기</button>
-						</div>
-						
-						<div class="join-row btn-input">
-							<label>
-								<input type="text" class="" id="zipCode" name="zipCode" placeholder="우편번호">
-							</label>
-							<button type="submit" class="btn btn-default right-btn">우편번호검색</button>
-						</div>
-						
-						<div class="join-row adress-info stack-wrap">
-							<label>
-								<input type="text" class="" id="adress" name="adress" placeholder="우편번호를 먼저 검색해주세요.">
-							</label>
-							<label>
-								<input type="text" class="" id="etcAdress" name="etcAdress" placeholder="나머지 주소를 입력해주세요.">
-							</label>
-						</div>
-					</div>
-					
-					<div class="optional-wrap join-section">
-						<h3 class="optional-title">선택항목</h3>
-						<div class="join-row">
-						</div>
-					</div>
+					</form>
 				</div>
 		</div>
 	</div>
@@ -94,6 +102,36 @@
 <%-- common js include file --%>
 <%@include file="/WEB-INF/views/js/common-lib.jsp" %>
 
-<script type="text/javascript"></script>
+<script type="text/javascript">
+
+$( "form" ).submit(function( event ) {
+	event.preventDefault();
+	var $input = $(this).find("input");
+	
+	$.ajax({
+		cache : false,
+		async : false,
+		url : $(this).attr("action"),
+		method : "post",
+		data : {
+			userId : $(this).find("#userId"),
+			userPw : $(this).find("#userPw"),
+			userName : $(this).find("#userName"),
+			userEmail : $(this).find("#userEmail"),
+			zipCode : $(this).find("#zipCode"),
+			adress : $(this).find("#adress"),
+			etcAdress : $(this).find("#etcAdress"),
+		}
+	}).done({
+		
+	}).fail({
+		
+	})
+	
+	console.log(  );
+});
+
+</script>
+
 </body>
-</html>
+</html>	
