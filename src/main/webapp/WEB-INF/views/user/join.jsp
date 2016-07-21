@@ -30,7 +30,7 @@
 								<label>
 									<input type="text" class="" id="userId" name="userId" placeholder="아이디">
 								</label>
-								<button type="submit" class="btn btn-default right-btn">중복확인</button>
+								<button type="button" class="btn btn-default right-btn id-check">중복확인</button>
 							</div>
 							
 							<div class="join-row stack-wrap">
@@ -52,14 +52,14 @@
 								<label>
 									<input type="text" class="" id="userEmail" name="userEmail" placeholder="이메일">
 								</label>
-								<button type="submit" class="btn btn-default right-btn">인증코드받기</button>
+								<button type="button" class="btn btn-default right-btn">인증코드받기</button>
 							</div>
 							
 							<div class="join-row btn-input">
 								<label>
 									<input type="text" class="" id="zipCode" name="zipCode" placeholder="우편번호">
 								</label>
-								<button type="submit" class="btn btn-default right-btn">우편번호검색</button>
+								<button type="button" class="btn btn-default right-btn">우편번호검색</button>
 							</div>
 							
 							<div class="join-row adress-info stack-wrap">
@@ -104,14 +104,31 @@
 
 <script type="text/javascript">
 
+$(".id-check").on("click", function ( event ) {
+	console.log();
+	$.ajax({
+		cache : false,
+		url : ctx + "/rest/idCheck",
+		method : "post",
+		data : {
+			userId : $(this).prev().children("input").val()
+		}
+	}).done( function ( response ) {
+		
+		console.log( response );
+		
+	}).fail( function ( error ) {
+		console.log( error )
+	});
+});
+
 $( "form" ).submit(function( event ) {
 	event.preventDefault();
 	var $input = $(this).find("input");
 	
 	$.ajax({
 		cache : false,
-		async : false,
-		url : $(this).attr("action"),
+ 		url : $(this).attr("action"),
 		method : "post",
 		data : {
 			userId : $(this).find("#userId"),
@@ -122,11 +139,11 @@ $( "form" ).submit(function( event ) {
 			adress : $(this).find("#adress"),
 			etcAdress : $(this).find("#etcAdress"),
 		}
-	}).done({
-		
-	}).fail({
-		
-	})
+	}).done( function ( response ){
+		console.log( response );
+	}).fail( function ( error ) {
+		console.log( error )
+	});
 	
 	console.log(  );
 });
