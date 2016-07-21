@@ -25,7 +25,7 @@
 	<resources mapping="/js/**" location="/WEB-INF/views/js/" />
 	<resources mapping="/images/**" location="/WEB-INF/views/images/" />
 	<resources mapping="/fonts/**" location="/WEB-INF/views/fonts/" />
-	<resources mapping="/models/**" location="/WEB-INF/views/models/" />
+	<resources mapping="/svg/**" location="/WEB-INF/views/svg/" />
 	
 	<context:component-scan base-package="com.Remento.Controller" />
 </beans:beans>

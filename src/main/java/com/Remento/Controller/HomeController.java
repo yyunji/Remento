@@ -32,11 +32,11 @@ public class HomeController {
 //			return new ModelAndView("redirect:/login");
 //		}
 //		
-//		List<Map<String, Object>> test = testService.test();
+		List<Map<String, Object>> test = testService.test();
 ////		int test = 0;
 		
-		ModelAndView mav = new ModelAndView("/main");
-//		mav.addObject("test", test);
+		ModelAndView mav = new ModelAndView("/index");
+		mav.addObject("test", test);
 		return mav;
 	}
 	
@@ -46,6 +46,15 @@ public class HomeController {
 			HttpServletResponse response
 			) {
 		ModelAndView mav = new ModelAndView("/home");
+		
+		return mav;
+	}
+	@RequestMapping(value="/join")
+	public ModelAndView join(
+			HttpServletRequest request,
+			HttpServletResponse response
+			) {
+		ModelAndView mav = new ModelAndView("/user/join");
 		
 		return mav;
 	}

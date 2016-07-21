@@ -8,12 +8,14 @@
 <title><%= RementoCommon.appName %> - 샘플</title>
 
 <c:set value="${pageContext.request.contextPath }" var="ctx"/>
+
+<link href="${ctx }/css/index.css" rel="stylesheet" />
 <%@include file="/WEB-INF/views/css/meta.jsp" %>
+
 </head>
 <body>
 
 <div id="wrap">
-	
 	<div id="header">
 		<%@include file="/WEB-INF/views/include/header.jsp" %>
 	</div>
@@ -24,7 +26,6 @@
 	<div id="footer">
 		<%@include file="/WEB-INF/views/include/footer.jsp" %>
 	</div>
-
 </div>
 
 <!-- contextPath variable declare -->
